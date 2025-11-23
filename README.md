@@ -1,6 +1,6 @@
 # Case3KutuphaneBilgiSistemiEFProject
 Bu depoda Murat Yücedağ'ın Youtube'daki C# Eğitim Kampının 17. dersinde verilen case 3 için entity framework projesi yer almaktadır. Case olarak bir kütüphane bilgi sistemi kurulacaktır.
---bu proje daha sonra devam edşlecek n katmanlı bir proje olduğu için diğer projeler de olmaktadır. asıl ödev CSharpEgitimKampi301.EFProject içinde yapılmıştır.
+*bu proje daha sonra devam edilecek n katmanlı bir proje olduğu için diğer projeler de olmaktadır. asıl ödev CSharpEgitimKampi301.EFProject içinde yapılmıştır.*
 ## 9 ve 10. Dersler
 Bu derslerde MS SQL üzerinden sql kullanımını öğrendim. Tablo oluşturma, veri oluşturma vb.
 ## 11 ve 12. Dersler
