@@ -1,0 +1,77 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="LibraNexusModelStoreContainer" CdmEntityContainer="LibraNexusEntities">
+    <EntitySetMapping Name="Admin">
+      <EntityTypeMapping TypeName="LibraNexusModel.Admin">
+        <MappingFragment StoreEntitySet="Admin">
+          <ScalarProperty Name="AdminId" ColumnName="AdminId" />
+          <ScalarProperty Name="AdminName" ColumnName="AdminName" />
+          <ScalarProperty Name="AdminSurname" ColumnName="AdminSurname" />
+          <ScalarProperty Name="AdminTitle" ColumnName="AdminTitle" />
+          <ScalarProperty Name="AdminEmail" ColumnName="AdminEmail" />
+          <ScalarProperty Name="AdminPassword" ColumnName="AdminPassword" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Author">
+      <EntityTypeMapping TypeName="LibraNexusModel.Author">
+        <MappingFragment StoreEntitySet="Author">
+          <ScalarProperty Name="AuthorId" ColumnName="AuthorId" />
+          <ScalarProperty Name="AuthorName" ColumnName="AuthorName" />
+          <ScalarProperty Name="AuthorSurname" ColumnName="AuthorSurname" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Book">
+      <EntityTypeMapping TypeName="LibraNexusModel.Book">
+        <MappingFragment StoreEntitySet="Book">
+          <ScalarProperty Name="BookId" ColumnName="BookId" />
+          <ScalarProperty Name="BookTitle" ColumnName="BookTitle" />
+          <ScalarProperty Name="AuthorId" ColumnName="AuthorId" />
+          <ScalarProperty Name="GenreId" ColumnName="GenreId" />
+          <ScalarProperty Name="BookPublishYear" ColumnName="BookPublishYear" />
+          <ScalarProperty Name="BookLanguage" ColumnName="BookLanguage" />
+          <ScalarProperty Name="BookTotalCopy" ColumnName="BookTotalCopy" />
+          <ScalarProperty Name="BookYear" ColumnName="BookYear" />
+          <ScalarProperty Name="IsInLibrary" ColumnName="IsInLibrary" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Borrowing">
+      <EntityTypeMapping TypeName="LibraNexusModel.Borrowing">
+        <MappingFragment StoreEntitySet="Borrowing">
+          <ScalarProperty Name="BorrowingId" ColumnName="BorrowingId" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="Book1Id" ColumnName="Book1Id" />
+          <ScalarProperty Name="Book2Id" ColumnName="Book2Id" />
+          <ScalarProperty Name="Book3Id" ColumnName="Book3Id" />
+          <ScalarProperty Name="BorrowDate" ColumnName="BorrowDate" />
+          <ScalarProperty Name="DueDate" ColumnName="DueDate" />
+          <ScalarProperty Name="UnitPenalty" ColumnName="UnitPenalty" />
+          <ScalarProperty Name="TotalPenalty" ColumnName="TotalPenalty" />
+          <ScalarProperty Name="IsItDelayed" ColumnName="IsItDelayed" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Genre">
+      <EntityTypeMapping TypeName="LibraNexusModel.Genre">
+        <MappingFragment StoreEntitySet="Genre">
+          <ScalarProperty Name="GenreId" ColumnName="GenreId" />
+          <ScalarProperty Name="GenreTitle" ColumnName="GenreTitle" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="User">
+      <EntityTypeMapping TypeName="LibraNexusModel.User">
+        <MappingFragment StoreEntitySet="User">
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="UserName" ColumnName="UserName" />
+          <ScalarProperty Name="UserSurname" ColumnName="UserSurname" />
+          <ScalarProperty Name="UserEmail" ColumnName="UserEmail" />
+          <ScalarProperty Name="UserPassword" ColumnName="UserPassword" />
+          <ScalarProperty Name="DidBorrow" ColumnName="DidBorrow" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

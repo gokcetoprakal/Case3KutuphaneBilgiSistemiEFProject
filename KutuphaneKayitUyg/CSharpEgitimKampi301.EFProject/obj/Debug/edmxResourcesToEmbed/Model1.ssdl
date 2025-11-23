@@ -1,0 +1,173 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="LibraNexusModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Admin">
+    <Key>
+      <PropertyRef Name="AdminId" />
+    </Key>
+    <Property Name="AdminId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="AdminName" Type="nvarchar" MaxLength="50" />
+    <Property Name="AdminSurname" Type="nvarchar" MaxLength="50" />
+    <Property Name="AdminTitle" Type="nvarchar" MaxLength="50" />
+    <Property Name="AdminEmail" Type="nvarchar(max)" />
+    <Property Name="AdminPassword" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="Author">
+    <Key>
+      <PropertyRef Name="AuthorId" />
+    </Key>
+    <Property Name="AuthorId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="AuthorName" Type="nvarchar" MaxLength="50" />
+    <Property Name="AuthorSurname" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="Book">
+    <Key>
+      <PropertyRef Name="BookId" />
+    </Key>
+    <Property Name="BookId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="BookTitle" Type="nvarchar" MaxLength="50" />
+    <Property Name="AuthorId" Type="int" />
+    <Property Name="GenreId" Type="int" />
+    <Property Name="BookPublishYear" Type="int" />
+    <Property Name="BookLanguage" Type="nvarchar" MaxLength="50" />
+    <Property Name="BookTotalCopy" Type="int" />
+    <Property Name="BookYear" Type="int" />
+    <Property Name="IsInLibrary" Type="bit" />
+  </EntityType>
+  <EntityType Name="Borrowing">
+    <Key>
+      <PropertyRef Name="BorrowingId" />
+    </Key>
+    <Property Name="BorrowingId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="UserId" Type="int" />
+    <Property Name="Book1Id" Type="int" />
+    <Property Name="Book2Id" Type="int" />
+    <Property Name="Book3Id" Type="int" />
+    <Property Name="BorrowDate" Type="datetime" />
+    <Property Name="DueDate" Type="datetime" />
+    <Property Name="UnitPenalty" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="TotalPenalty" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="IsItDelayed" Type="bit" />
+  </EntityType>
+  <EntityType Name="Genre">
+    <Key>
+      <PropertyRef Name="GenreId" />
+    </Key>
+    <Property Name="GenreId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="GenreTitle" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="User">
+    <Key>
+      <PropertyRef Name="UserId" />
+    </Key>
+    <Property Name="UserId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="UserName" Type="nvarchar" MaxLength="50" />
+    <Property Name="UserSurname" Type="nvarchar" MaxLength="50" />
+    <Property Name="UserEmail" Type="nvarchar(max)" />
+    <Property Name="UserPassword" Type="nvarchar" MaxLength="50" />
+    <Property Name="DidBorrow" Type="bit" />
+  </EntityType>
+  <Association Name="bookauthorid">
+    <End Role="Author" Type="Self.Author" Multiplicity="0..1" />
+    <End Role="Book" Type="Self.Book" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Author">
+        <PropertyRef Name="AuthorId" />
+      </Principal>
+      <Dependent Role="Book">
+        <PropertyRef Name="AuthorId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="bookgenreid">
+    <End Role="Genre" Type="Self.Genre" Multiplicity="0..1" />
+    <End Role="Book" Type="Self.Book" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Genre">
+        <PropertyRef Name="GenreId" />
+      </Principal>
+      <Dependent Role="Book">
+        <PropertyRef Name="GenreId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="borrowingbook1id">
+    <End Role="Book" Type="Self.Book" Multiplicity="0..1" />
+    <End Role="Borrowing" Type="Self.Borrowing" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Book">
+        <PropertyRef Name="BookId" />
+      </Principal>
+      <Dependent Role="Borrowing">
+        <PropertyRef Name="Book1Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="borrowingbook2id">
+    <End Role="Book" Type="Self.Book" Multiplicity="0..1" />
+    <End Role="Borrowing" Type="Self.Borrowing" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Book">
+        <PropertyRef Name="BookId" />
+      </Principal>
+      <Dependent Role="Borrowing">
+        <PropertyRef Name="Book2Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="borrowingbook3id">
+    <End Role="Book" Type="Self.Book" Multiplicity="0..1" />
+    <End Role="Borrowing" Type="Self.Borrowing" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Book">
+        <PropertyRef Name="BookId" />
+      </Principal>
+      <Dependent Role="Borrowing">
+        <PropertyRef Name="Book3Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="borrowinguserid">
+    <End Role="User" Type="Self.User" Multiplicity="0..1" />
+    <End Role="Borrowing" Type="Self.Borrowing" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="UserId" />
+      </Principal>
+      <Dependent Role="Borrowing">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="LibraNexusModelStoreContainer">
+    <EntitySet Name="Admin" EntityType="Self.Admin" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Author" EntityType="Self.Author" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Book" EntityType="Self.Book" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Borrowing" EntityType="Self.Borrowing" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Genre" EntityType="Self.Genre" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="User" EntityType="Self.User" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="bookauthorid" Association="Self.bookauthorid">
+      <End Role="Author" EntitySet="Author" />
+      <End Role="Book" EntitySet="Book" />
+    </AssociationSet>
+    <AssociationSet Name="bookgenreid" Association="Self.bookgenreid">
+      <End Role="Genre" EntitySet="Genre" />
+      <End Role="Book" EntitySet="Book" />
+    </AssociationSet>
+    <AssociationSet Name="borrowingbook1id" Association="Self.borrowingbook1id">
+      <End Role="Book" EntitySet="Book" />
+      <End Role="Borrowing" EntitySet="Borrowing" />
+    </AssociationSet>
+    <AssociationSet Name="borrowingbook2id" Association="Self.borrowingbook2id">
+      <End Role="Book" EntitySet="Book" />
+      <End Role="Borrowing" EntitySet="Borrowing" />
+    </AssociationSet>
+    <AssociationSet Name="borrowingbook3id" Association="Self.borrowingbook3id">
+      <End Role="Book" EntitySet="Book" />
+      <End Role="Borrowing" EntitySet="Borrowing" />
+    </AssociationSet>
+    <AssociationSet Name="borrowinguserid" Association="Self.borrowinguserid">
+      <End Role="User" EntitySet="User" />
+      <End Role="Borrowing" EntitySet="Borrowing" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>
